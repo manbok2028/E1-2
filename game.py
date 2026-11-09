@@ -51,6 +51,25 @@ class QuizGame:
                 continue
             return number
 
+    def ask_text(self, prompt: str) -> str:
+        """빈 문자열은 받지 않는 공통 텍스트 입력 도우미다."""
+        while True:
+            value = input(prompt).strip()
+            if value:
+                return value
+            print("⚠️ 빈 입력은 사용할 수 없습니다. 다시 입력하세요.")
+
+    def add_quiz(self) -> None:
+        """문제·선택지 네 개·정답을 받아 새 퀴즈를 저장한다."""
+        print("\n📌 새로운 퀴즈를 추가합니다.")
+        question = self.ask_text("문제: ")
+        choices = [self.ask_text(f"선택지 {number}: ") for number in range(1, 5)]
+        answer = self.ask_number("정답 번호 (1-4): ", 1, 4)
+        hint = input("힌트 (없으면 Enter): ").strip()
+        self.quizzes.append(Quiz(question, choices, answer, hint))
+        self.save()
+        print(f"✅ 퀴즈가 추가되었습니다. 현재 {len(self.quizzes)}개입니다.")
+
     def list_quizzes(self) -> None:
         if not self.quizzes:
             print("📭 등록된 퀴즈가 없습니다.")
@@ -131,6 +150,8 @@ class QuizGame:
                 choice = self.ask_number("선택: ", 1, 6)
                 if choice == 1:
                     self.play_quizzes()
+                elif choice == 2:
+                    self.add_quiz()
                 elif choice == 3:
                     self.list_quizzes()
                 elif choice == 6:
