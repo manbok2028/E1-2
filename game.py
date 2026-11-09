@@ -78,6 +78,30 @@ class QuizGame:
         for number, quiz in enumerate(self.quizzes, start=1):
             print(f"  [{number}] {quiz.question}")
 
+    def show_score(self) -> None:
+        """최고 점수와 가장 최근 게임 기록을 보여 준다."""
+        if not self.history:
+            print("🏆 아직 퀴즈를 푼 기록이 없습니다. 먼저 퀴즈를 풀어 보세요.")
+            return
+        latest = self.history[-1]
+        print(f"🏆 최고 점수: {self.best_score}점")
+        print(
+            "   최근 기록: "
+            f"{latest['question_count']}문제 중 {latest['correct_count']}문제 정답 "
+            f"({latest['score']}점, {latest['played_at']})"
+        )
+
+    def delete_quiz(self) -> None:
+        """번호를 골라 퀴즈를 삭제하는 선택 보너스 기능이다."""
+        if not self.quizzes:
+            print("📭 삭제할 퀴즈가 없습니다.")
+            return
+        self.list_quizzes()
+        selected = self.ask_number("삭제할 퀴즈 번호: ", 1, len(self.quizzes))
+        removed = self.quizzes.pop(selected - 1)
+        self.save()
+        print(f"🗑️ 삭제했습니다: {removed.question}")
+
     def ask_answer(self, quiz: Quiz) -> tuple[int, bool]:
         """정답 번호를 받고, 힌트 사용 여부도 함께 돌려준다."""
         hint_used = False
@@ -154,6 +178,10 @@ class QuizGame:
                     self.add_quiz()
                 elif choice == 3:
                     self.list_quizzes()
+                elif choice == 4:
+                    self.show_score()
+                elif choice == 5:
+                    self.delete_quiz()
                 elif choice == 6:
                     self.running = False
                     print("👋 다음에 또 만나요!")
