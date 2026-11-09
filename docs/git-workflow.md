@@ -15,7 +15,7 @@ git log --oneline --graph --all
 
 `06-git-graph.png`에서 `feature/play-quiz` 브랜치가 main에 병합된 모습을 확인할 수 있다.
 
-## 원격 제출 뒤 실제로 수행할 clone·pull 실습
+## 실제 완료한 clone·pull 실습 (2026-11-09)
 
 ```powershell
 # 별도 폴더로 원격 저장소 복제
@@ -33,3 +33,20 @@ git pull origin main
 ```
 
 GitHub 로그인·원격 생성이 필요한 단계이므로 토큰·비밀번호·개인키는 문서나 저장소에 기록하지 않는다.
+
+### 실제 확인 결과
+
+```text
+Cloning into 'quiz-evidence-clone'...
+16cf8ce docs: add learner-friendly evaluation report and evidence
+
+af71846 docs: record clone practice
+To https://github.com/manbok2028/E1-2.git
+   16cf8ce..af71846  main -> main
+
+Updating 16cf8ce..af71846
+Fast-forward
+README.md | 2 ++
+```
+
+복제본에서 README에 “Git clone 실습 확인” 문장을 추가해 커밋·푸시했고, 원래 E1-2 폴더에서 `git pull origin main`으로 그 문장이 실제로 반영된 것을 확인했다.

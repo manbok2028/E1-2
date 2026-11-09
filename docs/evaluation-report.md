@@ -84,8 +84,8 @@
 | `git checkout -b` | 다른 아이디어를 시험할 새 길입니다. | `feature/play-quiz` 브랜치 생성 |
 | `git merge` | 새 길에서 만든 것을 큰길(main)로 가져옵니다. | 플레이 기능 병합 커밋 |
 | `git push` | 내 컴퓨터 공책을 GitHub에도 올립니다. | 제출 시 `origin/main`으로 푸시 |
-| `git clone` | GitHub 공책을 다른 폴더에 복사합니다. | 원격 푸시 뒤 별도 폴더에서 실습 |
-| `git pull` | GitHub에서 바뀐 내용을 가져옵니다. | 복제본 변경 뒤 원래 폴더에서 반영 확인 |
+| `git clone` | GitHub 공책을 다른 폴더에 복사합니다. | `quiz-evidence-clone` 폴더에 실제 복제 완료 |
+| `git pull` | GitHub에서 바뀐 내용을 가져옵니다. | 복제본의 README 변경을 원래 E1-2 폴더에 실제 반영 완료 |
 
 ## 5. 실제 실행 증빙
 
