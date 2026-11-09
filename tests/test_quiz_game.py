@@ -66,6 +66,16 @@ class GameInputTests(unittest.TestCase):
             self.assertEqual(game.best_score, 100)
             self.assertEqual(game.history[-1]["correct_count"], 1)
 
+    def test_eof_exits_safely_and_saves_state(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            path = Path(temporary_directory) / "state.json"
+            game = QuizGame(path)
+            with patch("builtins.input", side_effect=EOFError):
+                with redirect_stdout(io.StringIO()) as output:
+                    game.run()
+            self.assertTrue(path.exists())
+            self.assertIn("안전하게 종료", output.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -15,7 +15,7 @@
 1. `python main.py`를 실행하고 메뉴에서 1~6을 선택한다.
 2. `2. 퀴즈 추가`로 문제를 하나 넣고 종료한 뒤 다시 실행한다. `3. 퀴즈 목록`에서 문제가 남아 있으면 저장 성공이다.
 3. 메뉴에 `abc`, 빈 Enter, `9`를 넣어 안내 문구와 재입력 흐름을 확인한다.
-4. `python -m unittest discover -s tests -v`를 실행해 6개 핵심 테스트의 통과를 확인한다.
+4. `python -m unittest discover -s tests -v`를 실행해 7개 핵심 테스트의 통과를 확인한다.
 5. `git log --oneline --graph --all`로 기능 단위 커밋과 `feature/play-quiz` 병합을 확인한다.
 
 ## 3. 메뉴와 기능
