@@ -65,8 +65,32 @@
       ],
       "answer": 2,
       "hint": "낮에 우리를 밝게 비춰요."
+    },
+    {
+      "question": "What is the English word for water?",
+      "choices": [
+        "water",
+        "fire",
+        "wind",
+        "earth"
+      ],
+      "answer": 1,
+      "hint": "Water hint"
     }
   ],
   "best_score": 0,
-  "history": []
+  "history": [
+    {
+      "played_at": "2026-11-09T17:07:15",
+      "question_count": 1,
+      "correct_count": 0,
+      "score": 0
+    },
+    {
+      "played_at": "2026-11-09T17:08:00",
+      "question_count": 1,
+      "correct_count": 0,
+      "score": 0
+    }
+  ]
 }
