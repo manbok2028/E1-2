@@ -2,6 +2,8 @@
 
 Python으로 만든 터미널 퀴즈 게임입니다. 퀴즈를 풀고 직접 추가할 수 있으며, 프로그램을 껐다 켜도 퀴즈·최고 점수·게임 이력이 `state.json`에 남습니다.
 
+> Git clone 실습 확인: 2026-11-09에 별도 폴더로 복제한 뒤 이 문장을 추가하고 원격에 푸시했습니다.
+
 - 평가자를 위한 쉬운 설명: [평가 보고서](docs/evaluation-report.md)
 - Git 브랜치·병합·원격 실습 기록: [Git 작업 기록](docs/git-workflow.md)
 - 실제 실행 PNG: [docs/screenshots](docs/screenshots)
