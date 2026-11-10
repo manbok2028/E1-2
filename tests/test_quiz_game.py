@@ -24,6 +24,14 @@ class QuizAndStorageTests(unittest.TestCase):
     def test_default_quizzes_are_six_or_more(self) -> None:
         self.assertGreaterEqual(len(create_default_quizzes()), 5)
 
+    def test_default_tax_quizzes_reflect_quiz_game_topics(self) -> None:
+        questions = [quiz.question for quiz in create_default_quizzes()]
+        self.assertTrue(any("국세가 아닌" in question for question in questions))
+        self.assertTrue(any("종합소득세" in question for question in questions))
+        self.assertTrue(any("원천징수" in quiz.choices for quiz in create_default_quizzes()))
+        self.assertTrue(any("부가가치세" in question for question in questions))
+        self.assertTrue(any("경정청구" in quiz.choices for quiz in create_default_quizzes()))
+
     def test_missing_and_corrupt_state_recover_to_defaults(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             path = Path(temporary_directory) / "state.json"

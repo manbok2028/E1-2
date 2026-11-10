@@ -66,7 +66,7 @@ def main() -> None:
 
     add_and_list = command_output(
         [python, "main.py"],
-        "2\nWhat is the English word for water?\nwater\nfire\nwind\nearth\n1\nWater hint\n3\n6\n",
+        "2\nWhich tax is a local tax?\nProperty tax\nIncome tax\nCorporate tax\nValue added tax\n1\nLocal government tax\n3\n6\n",
     )
     render_terminal("04-add-and-list.png", "실제 프로그램 실행 · 퀴즈 추가와 목록", add_and_list)
 

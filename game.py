@@ -24,7 +24,7 @@ class QuizGame:
 
     def show_menu(self) -> None:
         print("\n" + "=" * 44)
-        print("          🎯 우리 문화 퀴즈 게임 🎯")
+        print("          🎯 생활세금 퀴즈 게임 🎯")
         print("=" * 44)
         print("1. 퀴즈 풀기")
         print("2. 퀴즈 추가")
