@@ -15,11 +15,15 @@ class Quiz:
     hint: str = ""
 
     def __post_init__(self) -> None:
-        if not self.question.strip():
+        if not isinstance(self.question, str) or not self.question.strip():
             raise ValueError("문제는 비어 있을 수 없습니다.")
-        if len(self.choices) != 4 or any(not item.strip() for item in self.choices):
+        if (
+            not isinstance(self.choices, list)
+            or len(self.choices) != 4
+            or any(not isinstance(item, str) or not item.strip() for item in self.choices)
+        ):
             raise ValueError("선택지는 비어 있지 않은 4개여야 합니다.")
-        if self.answer not in range(1, 5):
+        if isinstance(self.answer, bool) or not isinstance(self.answer, int) or self.answer not in range(1, 5):
             raise ValueError("정답 번호는 1부터 4 사이여야 합니다.")
 
     def display(self) -> str:
@@ -42,9 +46,21 @@ class Quiz:
 
     @classmethod
     def from_dict(cls, payload: dict[str, object]) -> "Quiz":
+        if not isinstance(payload, dict):
+            raise ValueError("퀴즈 데이터는 객체 형태여야 합니다.")
+        question = payload.get("question")
+        choices = payload.get("choices")
+        answer = payload.get("answer")
+        hint = payload.get("hint", "")
+        if not isinstance(question, str) or not isinstance(choices, list):
+            raise ValueError("퀴즈의 문제와 선택지 형식이 올바르지 않습니다.")
+        if not isinstance(answer, int) or isinstance(answer, bool):
+            raise ValueError("퀴즈의 정답 번호 형식이 올바르지 않습니다.")
+        if not isinstance(hint, str):
+            raise ValueError("퀴즈의 힌트 형식이 올바르지 않습니다.")
         return cls(
-            question=str(payload["question"]),
-            choices=[str(choice) for choice in payload["choices"]],  # type: ignore[index]
-            answer=int(payload["answer"]),
-            hint=str(payload.get("hint", "")),
+            question=question,
+            choices=choices,
+            answer=answer,
+            hint=hint,
         )

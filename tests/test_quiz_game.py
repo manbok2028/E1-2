@@ -21,6 +21,10 @@ class QuizAndStorageTests(unittest.TestCase):
         self.assertFalse(quiz.is_correct(1))
         self.assertEqual(Quiz.from_dict(quiz.to_dict()).answer, 2)
 
+    def test_quiz_rejects_boolean_as_answer_number(self) -> None:
+        with self.assertRaises(ValueError):
+            Quiz("테스트 문제", ["가", "나", "다", "라"], True)
+
     def test_default_quizzes_are_six_or_more(self) -> None:
         self.assertGreaterEqual(len(create_default_quizzes()), 5)
 
@@ -39,6 +43,13 @@ class QuizAndStorageTests(unittest.TestCase):
             self.assertGreaterEqual(len(quizzes), 5)
             self.assertIn("기본", message)
             path.write_text("{broken", encoding="utf-8")
+            quizzes, _, _, message = load_state(path)
+            self.assertGreaterEqual(len(quizzes), 5)
+            self.assertIn("복구", message)
+            path.write_text(
+                '{"quizzes": [{"question": "문제", "choices": ["1", "2", "3", "4"], "answer": true}], "best_score": 0}',
+                encoding="utf-8",
+            )
             quizzes, _, _, message = load_state(path)
             self.assertGreaterEqual(len(quizzes), 5)
             self.assertIn("복구", message)
