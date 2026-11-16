@@ -10,6 +10,17 @@
 | 왜 이 주제인가요? | `quiz-game`의 세금 문항을 반영해 Python의 입력·조건·반복·저장을 배우면서 생활세금 용어도 익히기 위해서입니다. |
 | 실행 방법은? | 프로젝트 폴더에서 `python main.py`를 입력합니다. Python 3.10 이상이면 되고 외부 라이브러리는 필요 없습니다. |
 
+### 최신 quiz-game 반영 확인
+
+| 확인 항목 | E1-2 반영 결과 | 평가자가 볼 파일 |
+| --- | --- | --- |
+| 세금 핵심 문항 5개 | 국세/지방세, 종합소득세, 원천징수, 부가가치세, 경정청구를 기본 퀴즈 1~5번에 반영 | `default_data.py` |
+| E1-2 확장 학습 | 국세청 공식 확인 방법과 신고·납부 기한 특례를 더해 총 7문제 제공 | `default_data.py`, `state.json` |
+| 최신 저장 검증 | `true`/`false`를 정답 번호로 인정하지 않고 기본 퀴즈로 복구 | `quiz.py`, `tests/test_quiz_game.py` |
+| 검증 결과 | 표준 라이브러리 자동 테스트 9개 통과 | `tests/test_quiz_game.py` |
+
+최신 `quiz-game`의 세금 문항과 JSON 검증 방식을 2026-11-16에 다시 대조했습니다. 상세 비교는 [세금 퀴즈 반영표](tax-quiz-mapping.md)를 참고하세요.
+
 ## 2. 평가자가 확인할 순서
 
 1. `python main.py`를 실행하고 메뉴에서 1~6을 선택한다.
@@ -37,7 +48,7 @@
 | --- | --- | --- |
 | 변수 | 값을 담는 이름표가 붙은 상자입니다. | `best_score` 상자에는 가장 높은 점수를, `question` 상자에는 문제 글을 넣습니다. |
 | `int` | 1, 2, 100처럼 셀 수 있는 숫자입니다. | `answer=1`, `best_score=100` |
-| `str` | 글자 상자입니다. | `"한글을 만든 왕은?"` |
+| `str` | 글자 상자입니다. | `"부가가치세의 기본 세율은?"` |
 | `bool` | “맞아/아니야”만 담는 스위치입니다. | `quiz.is_correct()`가 정답이면 `True`를 돌려줍니다. |
 | `list` | 여러 물건을 순서대로 담는 바구니입니다. | 선택지 4개와 퀴즈 목록 |
 | `dict` | 이름표와 값을 짝지어 넣는 서랍입니다. | JSON의 `question`, `choices`, `answer` |
@@ -94,7 +105,7 @@
 | [01-environment.png](screenshots/01-environment.png) | 실제 Python·Git 버전 |
 | [02-menu-and-exit.png](screenshots/02-menu-and-exit.png) | 메뉴가 출력되고 저장 후 종료되는 모습 |
 | [03-invalid-input.png](screenshots/03-invalid-input.png) | 문자와 범위 밖 숫자를 다시 입력하게 하는 모습 |
-| [04-add-and-list.png](screenshots/04-add-and-list.png) | 퀴즈 추가 뒤 목록에 7번째 문제로 남은 모습 |
+| [04-add-and-list.png](screenshots/04-add-and-list.png) | 기본 생활세금 7문제와 추가한 8번째 세금 문제를 목록에서 확인한 모습 |
 | [05-play-and-score.png](screenshots/05-play-and-score.png) | 무작위 문제 출제·채점·점수 저장 모습 |
 | [06-git-graph.png](screenshots/06-git-graph.png) | 브랜치와 병합을 포함한 Git 그래프 |
 
